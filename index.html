@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comparador de Precios - MVP</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">SuperComparador</h1>
+      <nav aria-label="principal">
+        <button id="btn-open-list" title="Ver lista">🧾 Lista (<span id="count-list">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="search-area" aria-labelledby="buscar-title">
+      <h2 id="buscar-title">Buscar producto</h2>
+      <div class="search-row">
+        <input id="busqueda" type="search" placeholder="Ej. Leche, Pan, Huevos..." />
+        <select id="filter-super">
+          <option value="all">Filtrar por supermercado (todos)</option>
+          <option value="Mercadona">Mercadona</option>
+          <option value="Carrefour">Carrefour</option>
+          <option value="Alcampo">Alcampo</option>
+          <option value="Lidel">Lidel</option>
+          <option value="DIA">DIA</option>
+        </select>
+        <button id="btn-buscar">Buscar</button>
+      </div>
+    </section>
+
+    <section class="grid-and-wire">
+      <aside class="wireframe">
+        <h3>Wireframe - Imagen del Producto</h3>
+        <div class="imagen-placeholder">Aquí irá la imagen del producto</div>
+        <p class="hint">Usa imágenes reales o placeholders para mostrar el producto.</p>
+      </aside>
+
+      <section id="resultados-section">
+        <h3>Productos recomendados</h3>
+        <div id="listaResultados" class="grid-resultados" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section id="listaCompra" class="cart-panel" aria-labelledby="lista-title">
+      <h3 id="lista-title">Mi lista de la compra</h3>
+      <ul id="listaProductos" class="cart-list"></ul>
+      <div id="resultadoEconomico" class="summary"></div>
+      <div class="cart-actions">
+        <button id="btn-clear">Vaciar lista</button>
+        <button id="btn-download">Descargar lista (.csv)</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 SuperComparador • MVP</p>
+    </div>
+  </footer>
+
+  <!-- Recomendado: defer para asegurar que el DOM está cargado -->
+  <script src="app.js" defer></script>
+</body>
+</html>
