@@ -5,16 +5,15 @@ const fs = require('fs');
 const app = express();
 const port = 3000;
 
-// Sirve archivos estáticos desde el directorio 'public'
-// Si tus archivos están en el directorio raíz, puedes usar __dirname
-app.use(express.static(path.join(__dirname)));
+// Sirve archivos estáticos desde el directorio actual
+app.use(express.static(__dirname));
 
 // Ruta al archivo de productos
 const productosFilePath = path.join(__dirname, 'productos.json');
 
 // API endpoint para buscar y filtrar productos
 app.get('/api/productos', (req, res) => {
-    const { q, super: superFilter } = req.query;
+    const { q } = req.query;
 
     fs.readFile(productosFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -25,16 +24,9 @@ app.get('/api/productos', (req, res) => {
         const productos = JSON.parse(data);
         
         let resultados = productos.filter(p => {
-            // Manejar productos sin nombre o nulos para evitar errores
             const nombreProducto = p.nombre ? p.nombre.toLowerCase() : '';
             return nombreProducto.includes(q.toLowerCase());
         });
-
-        if (superFilter && superFilter !== 'all') {
-            resultados = resultados.filter(p => 
-                p.supermercado.toLowerCase() === superFilter.toLowerCase()
-            );
-        }
 
         res.json(resultados);
     });
