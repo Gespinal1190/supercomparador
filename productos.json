@@ -1,1 +1,738 @@
-[]
+[
+  {
+    "nombre": "Bebida de soja con calcio y vitaminas Hacendado",
+    "precioStr": "0,65 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/c331a74a00b4a089b26879c6ce1a9274.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.65
+  },
+  {
+    "nombre": "Bebida de avena Hacendado 0% azúcar",
+    "precioStr": "0,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/00dfbf377ed1f04756356386173ebe37.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.75
+  },
+  {
+    "nombre": "Café con leche cappuccino Hacendado",
+    "precioStr": "0,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/f71077f44842e60a701a74c15a390d44.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.75
+  },
+  {
+    "nombre": "Bebida de soja 0% azúcar Hacendado",
+    "precioStr": "0,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/2d78404f8185f3c3b96ed82fdde565d7.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.75
+  },
+  {
+    "nombre": "Café con leche descafeinado Hacendado",
+    "precioStr": "0,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/83a4f4b01c38d63142b2646afe4e1fa7.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.75
+  },
+  {
+    "nombre": "Café con leche light sin lactosa Hacendado",
+    "precioStr": "0,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/5fe468972fe8cc7a33506cba2b436946.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.75
+  },
+  {
+    "nombre": "Café con leche espresso Hacendado",
+    "precioStr": "0,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/fbace2711111518e9ab7a3c54ad58656.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.75
+  },
+  {
+    "nombre": "Leche desnatada Hacendado",
+    "precioStr": "0,84 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/f9df7beb923a87007236af7f7ce61945.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.84
+  },
+  {
+    "nombre": "Leche semidesnatada Hacendado",
+    "precioStr": "0,88 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/ed254b07893445ab9fb799d481dd2696.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.88
+  },
+  {
+    "nombre": "Leche entera Hacendado",
+    "precioStr": "0,97 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/40d2c64941b80f76dce672a3eab794a2.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 0.97
+  },
+  {
+    "nombre": "Natillas de chocolate con leche Hacendado",
+    "precioStr": "1,05 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/a5dc2eea8ad210c93cc2a831464d72ea.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.05
+  },
+  {
+    "nombre": "Leche semidesnatada fresca Hacendado",
+    "precioStr": "1,06 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/7f509c7db41e5763626998702f5cb755.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.06
+  },
+  {
+    "nombre": "Leche entera fresca Hacendado",
+    "precioStr": "1,12 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/d985ec1b5f0e21f2fe5e32857e5200af.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.12
+  },
+  {
+    "nombre": "Leche entera calcio Hacendado",
+    "precioStr": "1,17 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/aa83184873f5163115da5fb25ed84984.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.17
+  },
+  {
+    "nombre": "Fruta + leche tropical Hacendado sin azúcares añadidos",
+    "precioStr": "1,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/6d7dc4df24253ea7993dd7373e88d52c.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.2
+  },
+  {
+    "nombre": "Horchata de chufa Hacendado",
+    "precioStr": "1,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/e5828585becf129f783eca669ea72496.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.2
+  },
+  {
+    "nombre": "Fruta + leche mediterráneo Hacendado sin azúcares añadidos",
+    "precioStr": "1,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/b12e59e1e0ca122779074d3b38bd07db.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.2
+  },
+  {
+    "nombre": "Bebida de almendras con calcio Hacendado",
+    "precioStr": "1,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/e6d5007275dab302b4705da8a5db1382.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.2
+  },
+  {
+    "nombre": "Bebida de avena con calcio sin azúcares añadidos Hacendado",
+    "precioStr": "1,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/6418531f9054c82e7084945ad9febc23.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.2
+  },
+  {
+    "nombre": "Fruta + leche caribe Hacendado sin azúcares añadidos",
+    "precioStr": "1,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/ca90bf3b0851cee384f4c7ee51a97f29.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.2
+  },
+  {
+    "nombre": "Fruta + leche piña y coco Hacendado",
+    "precioStr": "1,25 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/7dc10fb4ef5caabe27bb80f64726d48a.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.25
+  },
+  {
+    "nombre": "Bebida de almendras 0% azúcar Hacendado",
+    "precioStr": "1,30 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/27f6eb89ac6b029a365db75392df373a.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.3
+  },
+  {
+    "nombre": "Bebida de avellana y arroz sin azúcares añadidos Hacendado",
+    "precioStr": "1,30 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/48f3b41650de1c5aab91011aceddc8d4.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.3
+  },
+  {
+    "nombre": "Batido de chocolate Hacendado",
+    "precioStr": "1,30 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/eae2a160d018b1c6b49b65aee8a11c79.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.3
+  },
+  {
+    "nombre": "Arroz con leche Hacendado",
+    "precioStr": "1,35 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/561f71fa74f9b3f75b6120b5ab646b32.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.35
+  },
+  {
+    "nombre": "Chocolate con leche Fussion Hacendado relleno de galleta caramelizada",
+    "precioStr": "1,35 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/6e4ccc56e05bd6ea02a31c55f109b993.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.35
+  },
+  {
+    "nombre": "Galletas Choco leche con chocolatina Hacendado",
+    "precioStr": "1,40 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/8391b82efd2c1caf4348ee2a05c8fd01.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.4
+  },
+  {
+    "nombre": "Galletas Digestive chocolate con leche Hacendado",
+    "precioStr": "1,40 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/b50740365ef904b26ea3032c1e89b16a.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.4
+  },
+  {
+    "nombre": "Leche de coco Hacendado",
+    "precioStr": "1,45 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/f0fe95bc35585423693e4f29869627fa.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.45
+  },
+  {
+    "nombre": "Leche desnatada Hacendado",
+    "precioStr": "1,47 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/005b40bb5a93e80cc77926ad84ae22e0.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.47
+  },
+  {
+    "nombre": "Leche semidesnatada Hacendado",
+    "precioStr": "1,50 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/ff7a708dfba6860d1c625d4cf8316719.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.5
+  },
+  {
+    "nombre": "Batido de chocolate Hacendado",
+    "precioStr": "1,50 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/3cea02fc6511b13003b8cd6ed8fc1f1e.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.5
+  },
+  {
+    "nombre": "Bebida de coco y arroz sin azúcares añadidos Hacendado",
+    "precioStr": "1,50 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/c9d5c928c1099db31752e2e688d808a6.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.5
+  },
+  {
+    "nombre": "Batido sabor fresa Hacendado",
+    "precioStr": "1,55 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/67340f8b22f491b349a2bb2c9f371a3d.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.55
+  },
+  {
+    "nombre": "Batido de vainilla Hacendado",
+    "precioStr": "1,55 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/2c47ef310a8e37191af12d47f641d6ee.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.55
+  },
+  {
+    "nombre": "Barritas de cereales Hacendado chocolate con leche",
+    "precioStr": "1,55 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/d873cc7c5f9b10efd6967eccf90e1511.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.55
+  },
+  {
+    "nombre": "Leche entera Hacendado",
+    "precioStr": "1,56 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/b4eb04d1b82b50228bae54af395675a1.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.56
+  },
+  {
+    "nombre": "Bebida láctea sabor canela y limón Hacendado",
+    "precioStr": "1,60 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/5458d9c7f79521885c059adda3db0c69.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.6
+  },
+  {
+    "nombre": "Horchata de chufa sin azúcares añadidos Hacendado",
+    "precioStr": "1,60 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/0f0a4480be2b1c5446e3c0c1f201e340.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.6
+  },
+  {
+    "nombre": "Chocolate con leche classic Hacendado",
+    "precioStr": "1,60 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/4fbd4326c624a5c9c03c8df395d755e8.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.6
+  },
+  {
+    "nombre": "Chocolate con leche Hacendado avellanas troceadas",
+    "precioStr": "1,65 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/54e54cb1a668eb22d9be2121a04742c8.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.65
+  },
+  {
+    "nombre": "Leche entera Hacendado",
+    "precioStr": "1,66 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/6e6f87557b2929cfffcc08ef72385328.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.66
+  },
+  {
+    "nombre": "Leche evaporada Hacendado",
+    "precioStr": "1,66 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/33f37a73c984afed77963c2538b113e5.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.66
+  },
+  {
+    "nombre": "Batido de chocolate 90% leche Hacendado",
+    "precioStr": "1,70 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/88e07b644387893c1e043b98c5e2025b.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.7
+  },
+  {
+    "nombre": "Galletas Digestive avena chocolate con leche Hacendado",
+    "precioStr": "1,70 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/bc86d55631b050ed5fddbd75adb3ef66.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.7
+  },
+  {
+    "nombre": "Galletas Choco con relleno de crema de cacao Hacendado recubiertas de chocolate con leche",
+    "precioStr": "1,70 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/9cc2b86fdfda6624b109f7f059d478a6.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.7
+  },
+  {
+    "nombre": "Rosquillas de chocolate con leche y coco Hacendado",
+    "precioStr": "1,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/b5cc245fcd571b06777d72c09c1493f8.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.75
+  },
+  {
+    "nombre": "Fideos de chocolate Hacendado",
+    "precioStr": "1,75 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/2edc66f0eb9284ea9039f1c605336b9f.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.75
+  },
+  {
+    "nombre": "Pan de leche Hacendado",
+    "precioStr": "1,80 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/91121503647f92da9fa6d7d56357c99c.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.8
+  },
+  {
+    "nombre": "Barritas de barquillo Hacendado con relleno de avellana cubiertas de chocolate con leche",
+    "precioStr": "1,80 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/0d7e2d4053bd3877e53a81d1ae7bf46e.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.8
+  },
+  {
+    "nombre": "Barritas crujientes Hacendado recubiertas de chocolate con leche",
+    "precioStr": "1,80 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/0ba881632c51950267f366ed61842fdb.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.8
+  },
+  {
+    "nombre": "Batido de chocolate Hacendado 0% sin azúcares añadidos",
+    "precioStr": "1,85 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/a4e0c0bf1672115a7bc19b82b78ddbc3.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.85
+  },
+  {
+    "nombre": "Barritas de galleta y caramelo Hacendado bañadas de chocolate con leche",
+    "precioStr": "1,85 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/797eca2ef0d8ed144f72df73f00b7fad.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.85
+  },
+  {
+    "nombre": "Leche semidesnatada de cabra Hacendado",
+    "precioStr": "1,87 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/075120af65e67734433e8ae6d7c6d139.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.87
+  },
+  {
+    "nombre": "Mini magdalenas con pepitas de chocolate con leche Hacendado",
+    "precioStr": "1,90 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/c016e796dbf8a761318f4793d2986b48.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.9
+  },
+  {
+    "nombre": "Mini cereales rellenos de leche Hacendado",
+    "precioStr": "1,95 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/c3ee3973b93c5c7a2b7c136f145bc3d1.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.95
+  },
+  {
+    "nombre": "Galletas Divertidas chocolate con leche Hacendado",
+    "precioStr": "1,95 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/51d47accde858f947c0e6c9cb093a70a.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.95
+  },
+  {
+    "nombre": "Tortitas de arroz con chocolate con leche Hacendado",
+    "precioStr": "1,95 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/992741048a0d81f6679873fd3eae9bd5.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.95
+  },
+  {
+    "nombre": "Barritas Peanuts Hacendado bañadas de chocolate con leche y rellenas con caramelo, cacahuetes tostados y crema azucarada",
+    "precioStr": "1,95 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/0ab8e3420dc6bf467586a688c2752244.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 1.95
+  },
+  {
+    "nombre": "Chocolate extrafino con leche Hacendado almendras enteras",
+    "precioStr": "2,00 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/2108bcd0f61db865e8504f9f12371050.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2
+  },
+  {
+    "nombre": "Cacahuetes Chocoiris Hacendado bañados de chocolate con leche coloreados",
+    "precioStr": "2,00 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/411ebbb18356a72c2e48392a9bce1ec5.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2
+  },
+  {
+    "nombre": "Horchata fresca Hacendado",
+    "precioStr": "2,10 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/98f305f1ce50a4707fb34a686385f0ad.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.1
+  },
+  {
+    "nombre": "Barritas de chocolate con leche Hacendado rellenas de leche",
+    "precioStr": "2,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/03ce26d79f3a66729dd3d07bf494e434.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.2
+  },
+  {
+    "nombre": "Preparado lácteo con cacao y cereales crecimiento Hacendado +1 año",
+    "precioStr": "2,20 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/767ab0fecaa0cc388900356abbfcd5f4.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.2
+  },
+  {
+    "nombre": "Cereales rellenos de leche Hacendado",
+    "precioStr": "2,40 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/f28fce2e1849905d03b85683e4407734.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.4
+  },
+  {
+    "nombre": "Chocolate con leche fundir Hacendado",
+    "precioStr": "2,40 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/5230162330fda1f7d9e46152ba7a087d.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.4
+  },
+  {
+    "nombre": "Cacahuetes Hacendado chocolate con leche",
+    "precioStr": "2,45 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/71915c5db3754a13e1f1ea5f25b6651b.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.45
+  },
+  {
+    "nombre": "Leche condensada desnatada Hacendado",
+    "precioStr": "2,55 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/461642fceb3d080f2cd3e6f67fea3b6d.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.55
+  },
+  {
+    "nombre": "Galletas con chocolate y crema de leche Hacendado",
+    "precioStr": "2,65 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/507271ff3760f7aafa67951e0fc6b219.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.65
+  },
+  {
+    "nombre": "Bolas de cereal bañadas Hacendado de chocolate negro, con leche y blanco",
+    "precioStr": "2,65 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/da1ac26bc66c335108870ce83fbd3122.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.65
+  },
+  {
+    "nombre": "Cereales copos de trigo integral y arroz Hacendado bañados en chocolate con leche",
+    "precioStr": "2,65 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/5ef3d3435e4f02a3589a3745a9891faa.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.65
+  },
+  {
+    "nombre": "Helado de leche merengada Hacendado",
+    "precioStr": "2,85 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/2412af59c3c31bb85eda3fa94f048e21.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 2.85
+  },
+  {
+    "nombre": "Helado barrita sabor cacahuete Hacendado con cobertura de chocolate con leche",
+    "precioStr": "3,40 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/0b6216764054f0d10fe9c8e1e66b3fe5.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 3.4
+  },
+  {
+    "nombre": "Café con leche en cápsula Hacendado",
+    "precioStr": "3,55 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/8551a9aa5574d1ddcb776b548b126588.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 3.55
+  },
+  {
+    "nombre": "Café con leche en cápsula descafeinado Hacendado",
+    "precioStr": "3,55 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/4ee8dcf4c122ee081dfa59dde32060cf.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 3.55
+  },
+  {
+    "nombre": "Leche condensada Hacendado",
+    "precioStr": "3,65 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/b6c7821e45659190d4af302c40508d34.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 3.65
+  },
+  {
+    "nombre": "Leche desnatada Hacendado",
+    "precioStr": "5,04 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/40b9fc5096d638d3e3fe2c5d4f8eb1d8.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 5.04
+  },
+  {
+    "nombre": "Leche semidesnatada Hacendado",
+    "precioStr": "5,28 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/b9613b9354f8b0705f998b2201ffe443.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 5.28
+  },
+  {
+    "nombre": "Leche desnatada sin lactosa Hacendado",
+    "precioStr": "5,58 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/5ad409227bf0b1c151395585e63b169f.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 5.58
+  },
+  {
+    "nombre": "Leche semidesnatada sin lactosa Hacendado",
+    "precioStr": "5,76 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/6b02e742d27be2ee2db0994bc431fe99.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 5.76
+  },
+  {
+    "nombre": "Leche entera Hacendado",
+    "precioStr": "5,82 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/4b1fd692f8032ec9e1ff419f27a856a4.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 5.82
+  },
+  {
+    "nombre": "Leche desnatada calcio Hacendado",
+    "precioStr": "6,00 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/8f6e801952f0226f6e716b7e353c1f9e.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 6
+  },
+  {
+    "nombre": "Leche semidesnatada calcio Hacendado",
+    "precioStr": "6,18 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/cf197c52289c9349011966afbe4ca15c.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 6.18
+  },
+  {
+    "nombre": "Leche entera sin lactosa Hacendado",
+    "precioStr": "6,24 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/69bbee0688a23e31f488fc531273bfaa.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 6.24
+  },
+  {
+    "nombre": "Bebida láctea desnatada omega 3 Hacendado",
+    "precioStr": "6,66 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/f67be29156bd625bdbd95683f7b58551.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 6.66
+  },
+  {
+    "nombre": "Leche entera calcio Hacendado",
+    "precioStr": "7,02 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/8f436dc356b125eab8fe766f42562bc0.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 7.02
+  },
+  {
+    "nombre": "Preparado lácteo crecimiento Hacendado +1 año",
+    "precioStr": "7,50 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/ed4e235859bc9c08970385babaa0fdb5.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 7.5
+  },
+  {
+    "nombre": "Bebida láctea semidesnatada con fibra Hacendado",
+    "precioStr": "7,50 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/be9b67b0a4dcf2bcbaabb8bac2ef3318.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 7.5
+  },
+  {
+    "nombre": "Leche +Proteínas desnatada Hacendado",
+    "precioStr": "7,80 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/d470211a0604c39ba3ff5f5d6ee734ed.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 7.8
+  },
+  {
+    "nombre": "Leche desnatada Hacendado",
+    "precioStr": "8,82 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/e2a6879b0f9a88fff1965e0f735136a9.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 8.82
+  },
+  {
+    "nombre": "Preparado lácteo con cereales crecimiento Hacendado +1 año",
+    "precioStr": "9,00 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/e699a50cc6e2a0cf252768c44dc58ee3.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 9
+  },
+  {
+    "nombre": "Leche entera Hacendado",
+    "precioStr": "9,36 €",
+    "imagen": "https://prod-mercadona.imgix.net/images/7c62cddec66dcb9ff1517ef35563c51c.jpg?fit=crop&h=300&w=300",
+    "enlace": "",
+    "supermercado": "Mercadona",
+    "precio": 9.36
+  }
+]
