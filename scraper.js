@@ -29,29 +29,6 @@ async function acceptCookies(page, supermarketName) {
     }
   }
 
-  const xpaths = [
-    "//button[contains(., 'Aceptar todo')]",
-    "//button[contains(., 'Aceptar todos')]",
-    "//button[contains(., 'Aceptar')]",
-    "//button[contains(., 'Acepto')]",
-    "//button[contains(., 'Consentir')]",
-    "//a[contains(., 'Aceptar')]"
-  ];
-
-  for (const xp of xpaths) {
-    try {
-      const [btn] = await page.$x(xp);
-      if (btn) {
-        console.log(`🍪 Aceptando cookies en ${supermarketName} (texto)`);
-        await btn.click();
-        await delay(1500);
-        return true;
-      }
-    } catch (err) {
-      console.error(`Error al aceptar cookies en ${supermarketName} con xpath ${xp}:`, err.message);
-    }
-  }
-
   console.log(`⚠️ No se encontraron botones de cookies en ${supermarketName}`);
   return false;
 }
@@ -62,7 +39,6 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
     browser = await puppeteer.launch({
       headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      // Descomenta si usas Chrome local
       // executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
     });
     const page = await browser.newPage();
@@ -71,6 +47,18 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
     const searchUrl = `${urlBase}${encodeURIComponent(searchTerm)}`;
     console.log(`⏳ Navegando a ${supermarketName}: ${searchUrl}`);
     await page.goto(searchUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+
+    // Espera adicional para contenido dinámico
+    console.log(`⏳ Esperando carga dinámica en ${supermarketName}...`);
+    await page.waitForTimeout(10000);
+
+    // Verificar si hay CAPTCHA o error
+    const pageContent = await page.content();
+    if (pageContent.includes('captcha') || pageContent.includes('verificación') || pageContent.includes('bot')) {
+      console.error(`🚨 Posible CAPTCHA detectado en ${supermarketName}`);
+      await page.screenshot({ path: `captcha_${supermarketName}.png`, fullPage: true });
+      return [];
+    }
 
     await acceptCookies(page, supermarketName);
 
@@ -91,10 +79,16 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
     }
 
     console.log(`🔎 Esperando productos en ${supermarketName}...`);
-    await page.waitForSelector(selectors.product, { timeout: 60000 });
+    try {
+      await page.waitForSelector(selectors.product, { timeout: 60000 });
+    } catch (err) {
+      console.error(`❌ Error esperando selector ${selectors.product} en ${supermarketName}: ${err.message}`);
+      await page.screenshot({ path: `error_${supermarketName}.png`, fullPage: true });
+      return [];
+    }
 
     let previousHeight;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       previousHeight = await page.evaluate('document.body.scrollHeight');
       await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
       await delay(3000);
@@ -102,7 +96,7 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
       if (newHeight === previousHeight) break;
     }
 
-    await page.screenshot({ path: `debug_${supermarketName}.png` });
+    await page.screenshot({ path: `debug_${supermarketName}.png`, fullPage: true });
 
     const products = await page.evaluate((selectors, supermarketName) => {
       const items = Array.from(document.querySelectorAll(selectors.product));
@@ -140,13 +134,13 @@ const configSupermercados = {
     postalCode: '28001'
   },
   DIA: {
-    urlBase: 'https://www.dia.es/search?q=',
+    urlBase: 'https://www.dia.es/buscador?q=',
     selectors: {
-      product: '.item-product',
+      product: '.search-product-card-list__item-container',
       name: '.product-card__title',
-      price: '.price',
-      image: '.image-container img',
-      url: '.product-card__content a'
+      price: '.product-card__price--current',
+      image: '.product-card__image img',
+      url: '.product-card__link'
     }
   }
 };
@@ -155,7 +149,7 @@ async function mainScraper(searchTerm = 'leche') {
   let allProducts = [];
 
   for (const [name, config] of Object.entries(configSupermercados)) {
-    const products = await scrapeSupermarket(config.urlBase, config.selectors, name, config.postalCode, searchTerm);
+    const products = await scrapeSupermarket(config.urlBase, selectors, name, config.postalCode, searchTerm);
     allProducts = [...allProducts, ...products];
   }
 
