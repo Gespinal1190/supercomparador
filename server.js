@@ -61,7 +61,7 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
 
     // Espera adicional para contenido dinámico
     console.log(`⏳ Esperando carga dinámica en ${supermarketName}...`);
-    await delay(30000); // Aumentado a 30s
+    await delay(30000);
 
     // Verificar si hay CAPTCHA usando selectores específicos
     const captchaSelectors = ['#recaptcha', '.g-recaptcha', '#cf-error-details', '[data-testid="captcha"]', '.captcha-form'];
@@ -96,15 +96,15 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
 
     console.log(`🔎 Esperando productos en ${supermarketName}...`);
     try {
-      // Verificar si la página contiene el texto "Resultados para"
+      // Verificar si la página contiene resultados
       const pageContent = await page.evaluate(() => document.body.innerText);
-      if (pageContent.includes('Resultados para')) {
+      if (pageContent.toLowerCase().includes('resultados') || pageContent.toLowerCase().includes('productos')) {
         console.log(`🛒 Página contiene resultados de búsqueda`);
       } else {
         console.log(`⚠️ No se encontraron resultados de búsqueda en la página`);
       }
 
-      await page.waitForSelector(selectors.product, { timeout: 90000 }); // Aumentado a 90s
+      await page.waitForSelector(selectors.product, { timeout: 90000 });
       await page.waitForFunction(`document.querySelectorAll("${selectors.product}").length > 0`, { timeout: 90000 });
       const productCount = await page.evaluate((selector) => {
         return document.querySelectorAll(selector).length;
@@ -118,7 +118,7 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
 
     // Desplazamiento para cargar más productos
     let previousHeight;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) { // Aumentado a 10 iteraciones
       previousHeight = await page.evaluate('document.body.scrollHeight');
       await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
       await delay(4000);
@@ -131,14 +131,19 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
     const products = await page.evaluate((selectors, supermarketName) => {
       const items = Array.from(document.querySelectorAll(selectors.product));
       return items.map(item => {
-        const nombre = item.querySelector(selectors.name)?.innerText.trim() || 'No disponible';
-        let precioStr = item.querySelector(selectors.price)?.innerText.trim() || 'No disponible';
+        const nombre = item.querySelector(selectors.name)?.innerText.trim() ||
+                       item.querySelector('.title, [class*="title"], [class*="name"]')?.innerText.trim() || 'No disponible';
+        let precioStr = item.querySelector(selectors.price)?.innerText.trim() ||
+                        item.querySelector('.price, [class*="price"]')?.innerText.trim() || 'No disponible';
         precioStr = precioStr.replace(/[^0-9,€]/g, '').replace(',', '.').replace('€', '');
-        const imagen = item.querySelector(selectors.image)?.src || item.querySelector(selectors.image)?.getAttribute('data-src') || '';
-        const enlace = item.querySelector(selectors.url)?.href || '#';
-        const precio = parseFloat(precioStr) || Infinity;
-        return { nombre, precio, precioStr: `${precio.toFixed(2)} €`, imagen, enlace, supermercado: supermarketName };
-      }).filter(p => p.precio !== Infinity && p.nombre !== 'No disponible');
+        const imagen = item.querySelector(selectors.image)?.src ||
+                       item.querySelector(selectors.image)?.getAttribute('data-src') ||
+                       item.querySelector('img')?.src || '';
+        const enlace = item.querySelector(selectors.url)?.href ||
+                       item.querySelector('a')?.href || '#';
+        const precio = parseFloat(precioStr) || 0; // Cambiado a 0 para no filtrar
+        return { nombre, precio, precioStr: precio > 0 ? `${precio.toFixed(2)} €` : precioStr, imagen, enlace, supermercado: supermarketName };
+      }).filter(p => p.nombre !== 'No disponible'); // Relajado el filtro
     }, selectors, supermarketName);
 
     console.log(`✅ ${products.length} productos extraídos de ${supermarketName}`);
