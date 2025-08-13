@@ -18,10 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const superFilter = selectSuper.value || 'all';
+
     listaResultados.innerHTML = "<p>Buscando... (puede tardar unos segundos)</p>";
 
     try {
-      const res = await fetch(`/api/productos?q=${encodeURIComponent(q)}`);
+      const res = await fetch(`/api/productos?q=${encodeURIComponent(q)}&super=${encodeURIComponent(superFilter)}`);
       if (!res.ok) throw new Error("Error en servidor");
       const datos = await res.json();
       mostrarResultados(datos);
