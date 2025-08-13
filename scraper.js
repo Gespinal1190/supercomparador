@@ -87,6 +87,7 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
       return [];
     }
 
+    // Desplazamiento para cargar más productos
     let previousHeight;
     for (let i = 0; i < 5; i++) {
       previousHeight = await page.evaluate('document.body.scrollHeight');
@@ -115,6 +116,7 @@ async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode
     return products.sort((a, b) => a.precio - b.precio).slice(0, 3);
   } catch (error) {
     console.error(`❌ Error en ${supermarketName}: ${error.message}`);
+    await page.screenshot({ path: `error_${supermarketName}.png`, fullPage: true });
     return [];
   } finally {
     if (browser) await browser.close();
@@ -134,13 +136,13 @@ const configSupermercados = {
     postalCode: '28001'
   },
   DIA: {
-    urlBase: 'https://www.dia.es/buscador?q=',
+    urlBase: 'https://www.dia.es/search?q=',
     selectors: {
-      product: '.search-product-card-list__item-container',
+      product: '.search-product-card',
       name: '.product-card__title',
       price: '.product-card__price--current',
       image: '.product-card__image img',
-      url: '.product-card__link'
+      url: '.product-card__content a'
     }
   }
 };
@@ -149,7 +151,7 @@ async function mainScraper(searchTerm = 'leche') {
   let allProducts = [];
 
   for (const [name, config] of Object.entries(configSupermercados)) {
-    const products = await scrapeSupermarket(config.urlBase, selectors, name, config.postalCode, searchTerm);
+    const products = await scrapeSupermarket(config.urlBase, config.selectors, name, config.postalCode, searchTerm);
     allProducts = [...allProducts, ...products];
   }
 
