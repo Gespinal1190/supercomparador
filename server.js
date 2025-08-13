@@ -1,132 +1,46 @@
 const express = require('express');
-const cors = require('cors');
+const path = require('path');
 const fs = require('fs');
-const cron = require('node-cron');
-const { exec } = require('child_process');
+
 const app = express();
-const PORT = 3000;
+const port = 3000;
 
-app.use(express.static(__dirname));
-app.use(cors());
-app.use(express.json());
+// Sirve archivos estáticos desde el directorio 'public'
+// Si tus archivos están en el directorio raíz, puedes usar __dirname
+app.use(express.static(path.join(__dirname)));
 
-let productos = [];
+// Ruta al archivo de productos
+const productosFilePath = path.join(__dirname, 'productos.json');
 
-function loadProducts() {
-  try {
-    if (fs.existsSync('productos.json')) {
-      const data = fs.readFileSync('productos.json', 'utf8');
-      productos = JSON.parse(data).map(p => {
-        // Limpiar precio: eliminar " €" y reemplazar "," por "."
-        const cleanedPrecioStr = p.precioStr.replace(/ €/g, '').replace(',', '.');
-        p.precio = parseFloat(cleanedPrecioStr) || 0;
-        return p;
-      });
-      console.log('✅ Productos cargados desde productos.json:', productos.length);
-    } else {
-      console.log('⚠️ productos.json no existe.');
-      productos = [];
-    }
-  } catch (err) {
-    console.error('❌ Error al cargar productos.json:', err.message);
-    productos = [];
-  }
-}
+// API endpoint para buscar y filtrar productos
+app.get('/api/productos', (req, res) => {
+    const { q, super: superFilter } = req.query;
 
-loadProducts();
+    fs.readFile(productosFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error al leer productos.json:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
 
-// Normalizar texto para búsquedas flexibles
-function normalizeText(text) {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
-    .replace(/[^a-z0-9\s]/g, '') // Eliminar caracteres especiales
-    .split(/\s+/); // Dividir en palabras
-}
-
-// Filtrar productos con coincidencia flexible
-function filterProducts(products, query, supermarket) {
-  const queryWords = normalizeText(query);
-  return products.filter(p => {
-    const nameWords = normalizeText(p.nombre);
-    const nameMatch = queryWords.some(q => nameWords.some(n => n.includes(q)));
-    const superMatch = supermarket === 'all' || p.supermercado.toLowerCase() === supermarket.toLowerCase();
-    return nameMatch && superMatch;
-  });
-}
-
-// Cron para ejecutar scraper diario con default "leche"
-cron.schedule('0 0 * * *', () => {
-  console.log('⏳ Ejecutando scraper programado...');
-  exec(`node scraper.js "leche"`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error en scraper programado: ${error.message}`);
-      return;
-    }
-    console.log(`Salida del scraper: ${stdout}`);
-    if (stderr) console.error(`Errores del scraper: ${stderr}`);
-    loadProducts();
-  });
-});
-
-// API de búsqueda
-app.get('/api/productos', async (req, res) => {
-  try {
-    const q = req.query.q?.trim().toLowerCase() || '';
-    const filtroSuper = req.query.super?.toLowerCase() || 'all';
-    console.log(`🔍 API: buscando "${q}" con filtro de supermercado "${filtroSuper}"`);
-
-    if (!q) {
-      console.log('⚠️ No se proporcionó término de búsqueda');
-      return res.json([]);
-    }
-
-    // Filtrar productos de productos.json
-    let resultados = filterProducts(productos, q, filtroSuper);
-    console.log(`Resultados de productos.json: ${resultados.length}`);
-
-    // Si no hay resultados, intentar con el scraper
-    if (resultados.length === 0) {
-      console.log(`No hay resultados para "${q}" en productos.json. Ejecutando scraper...`);
-      try {
-        await new Promise((resolve, reject) => {
-          exec(`node scraper.js "${q.replace(/"/g, '\\"')}"`, (error, stdout, stderr) => {
-            if (error) {
-              console.error(`Error en scraper: ${error.message}`);
-              reject(error);
-              return;
-            }
-            console.log(`Salida del scraper: ${stdout}`);
-            if (stderr) console.error(`Errores del scraper: ${stderr}`);
-            loadProducts();
-            resolve();
-          });
+        const productos = JSON.parse(data);
+        
+        let resultados = productos.filter(p => {
+            // Manejar productos sin nombre o nulos para evitar errores
+            const nombreProducto = p.nombre ? p.nombre.toLowerCase() : '';
+            return nombreProducto.includes(q.toLowerCase());
         });
-        resultados = filterProducts(productos, q, filtroSuper);
-        console.log(`Resultados tras scraper: ${resultados.length}`);
-      } catch (error) {
-        console.error('Error ejecutando scraper:', error.message);
-      }
-    }
 
-    // Fallback a productos.js
-    if (resultados.length === 0) {
-      console.log('Usando fallback de productos.js');
-      const fallback = require('./productos.js');
-      resultados = filterProducts(fallback, q, filtroSuper);
-      console.log(`Resultados de productos.js: ${resultados.length}`);
-    }
+        if (superFilter && superFilter !== 'all') {
+            resultados = resultados.filter(p => 
+                p.supermercado.toLowerCase() === superFilter.toLowerCase()
+            );
+        }
 
-    resultados.sort((a, b) => a.precio - b.precio);
-    console.log(`Enviando ${resultados.length} resultados al frontend`);
-    res.json(resultados.slice(0, 3));
-  } catch (err) {
-    console.error('❌ Error en /api/productos:', err.message);
-    res.status(500).json({ error: 'Error interno del servidor', details: err.message });
-  }
+        res.json(resultados);
+    });
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Servidor en http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+    console.log('Abre esta URL en tu navegador para ver la página.');
 });
