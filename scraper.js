@@ -1,7 +1,13 @@
 const puppeteer = require('puppeteer');
-const fs = require('fs');
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const userAgents = [
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15'
+];
 
 async function acceptCookies(page, supermarketName) {
   const selectors = [
@@ -14,109 +20,62 @@ async function acceptCookies(page, supermarketName) {
     'button[aria-label="Aceptar"]',
     'button[aria-label="Aceptar todo"]'
   ];
-
   for (const sel of selectors) {
-    try {
-      const el = await page.$(sel);
-      if (el) {
-        console.log(`🍪 Aceptando cookies en ${supermarketName} (selector: ${sel})`);
-        await el.click();
-        await delay(1500);
-        return true;
-      }
-    } catch (err) {
-      console.error(`Error al aceptar cookies en ${supermarketName} con ${sel}:`, err.message);
+    const el = await page.$(sel);
+    if (el) {
+      console.log(`🍪 Aceptando cookies en ${supermarketName}`);
+      await el.click();
+      await delay(2000);
+      return;
     }
   }
-
-  console.log(`⚠️ No se encontraron botones de cookies en ${supermarketName}`);
-  return false;
 }
 
 async function scrapeSupermarket(urlBase, selectors, supermarketName, postalCode, searchTerm) {
   let browser;
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      // executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-    });
+    browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
     const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36');
+    await page.setUserAgent(userAgents[Math.floor(Math.random() * userAgents.length)]);
 
-    const searchUrl = `${urlBase}${encodeURIComponent(searchTerm)}`;
-    console.log(`⏳ Navegando a ${supermarketName}: ${searchUrl}`);
-    await page.goto(searchUrl, { waitUntil: 'networkidle2', timeout: 60000 });
-
-    // Espera adicional para contenido dinámico
-    console.log(`⏳ Esperando carga dinámica en ${supermarketName}...`);
-    await page.waitForTimeout(10000);
-
-    // Verificar si hay CAPTCHA o error
-    const pageContent = await page.content();
-    if (pageContent.includes('captcha') || pageContent.includes('verificación') || pageContent.includes('bot')) {
-      console.error(`🚨 Posible CAPTCHA detectado en ${supermarketName}`);
-      await page.screenshot({ path: `captcha_${supermarketName}.png`, fullPage: true });
-      return [];
-    }
-
+    await page.goto(`${urlBase}${encodeURIComponent(searchTerm)}`, { waitUntil: 'networkidle2', timeout: 60000 });
+    await delay(30000);
     await acceptCookies(page, supermarketName);
 
     if (supermarketName === 'Mercadona' && postalCode) {
-      try {
-        const postalInput = 'input[placeholder="Código postal"], input[id="postalCode"]';
-        if (await page.$(postalInput)) {
-          console.log(`📍 Ingresando código postal ${postalCode} en Mercadona...`);
-          await page.type(postalInput, postalCode);
-          await page.click('button[type="submit"], button[data-testid="submit-postal-code"]');
-          await page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 });
-        } else {
-          console.log(`ℹ️ No se encontró campo de código postal en Mercadona`);
-        }
-      } catch (err) {
-        console.error(`Error al ingresar código postal en Mercadona:`, err.message);
+      const postalInput = 'input[placeholder="Código postal"], input[id="postalCode"]';
+      if (await page.$(postalInput)) {
+        await page.type(postalInput, postalCode, { delay: 100 });
+        await page.click('button[type="submit"], button[data-testid="submit-postal-code"]');
+        await page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 });
       }
     }
 
-    console.log(`🔎 Esperando productos en ${supermarketName}...`);
-    try {
-      await page.waitForSelector(selectors.product, { timeout: 60000 });
-    } catch (err) {
-      console.error(`❌ Error esperando selector ${selectors.product} en ${supermarketName}: ${err.message}`);
-      await page.screenshot({ path: `error_${supermarketName}.png`, fullPage: true });
-      return [];
-    }
+    await page.waitForSelector(selectors.product, { timeout: 90000 });
 
-    // Desplazamiento para cargar más productos
-    let previousHeight;
-    for (let i = 0; i < 5; i++) {
-      previousHeight = await page.evaluate('document.body.scrollHeight');
+    for (let i = 0; i < 10; i++) {
+      const prevHeight = await page.evaluate('document.body.scrollHeight');
       await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
-      await delay(3000);
+      await delay(4000);
       const newHeight = await page.evaluate('document.body.scrollHeight');
-      if (newHeight === previousHeight) break;
+      if (newHeight === prevHeight) break;
     }
-
-    await page.screenshot({ path: `debug_${supermarketName}.png`, fullPage: true });
 
     const products = await page.evaluate((selectors, supermarketName) => {
-      const items = Array.from(document.querySelectorAll(selectors.product));
-      return items.map(item => {
+      return Array.from(document.querySelectorAll(selectors.product)).map(item => {
         const nombre = item.querySelector(selectors.name)?.innerText.trim() || 'No disponible';
-        let precioStr = item.querySelector(selectors.price)?.innerText.trim() || 'No disponible';
+        let precioStr = item.querySelector(selectors.price)?.innerText.trim() || '0';
         precioStr = precioStr.replace(/[^0-9,€]/g, '').replace(',', '.').replace('€', '');
-        const imagen = item.querySelector(selectors.image)?.src || item.querySelector(selectors.image)?.getAttribute('data-src') || '';
+        const precio = parseFloat(precioStr) || 0;
+        const imagen = item.querySelector(selectors.image)?.src || '';
         const enlace = item.querySelector(selectors.url)?.href || '#';
-        const precio = parseFloat(precioStr) || Infinity;
         return { nombre, precio, precioStr: `${precio.toFixed(2)} €`, imagen, enlace, supermercado: supermarketName };
-      }).filter(p => p.precio !== Infinity && p.nombre !== 'No disponible');
+      }).filter(p => p.nombre !== 'No disponible');
     }, selectors, supermarketName);
 
-    console.log(`✅ ${products.length} productos extraídos de ${supermarketName}`);
     return products.sort((a, b) => a.precio - b.precio).slice(0, 3);
-  } catch (error) {
-    console.error(`❌ Error en ${supermarketName}: ${error.message}`);
-    await page.screenshot({ path: `error_${supermarketName}.png`, fullPage: true });
+  } catch (err) {
+    console.error(`Error en ${supermarketName}:`, err.message);
     return [];
   } finally {
     if (browser) await browser.close();
@@ -142,25 +101,18 @@ const configSupermercados = {
       name: '.product-card__title',
       price: '.product-card__price--current',
       image: '.product-card__image img',
-      url: '.product-card__content a'
+      url: '.product-card__link'
     }
   }
 };
 
-async function mainScraper(searchTerm = 'leche') {
+async function scrapeProductos(searchTerm) {
   let allProducts = [];
-
   for (const [name, config] of Object.entries(configSupermercados)) {
     const products = await scrapeSupermarket(config.urlBase, config.selectors, name, config.postalCode, searchTerm);
     allProducts = [...allProducts, ...products];
   }
-
-  allProducts.sort((a, b) => a.precio - b.precio);
-  const top3 = allProducts.slice(0, 3);
-
-  fs.writeFileSync('productos.json', JSON.stringify(top3, null, 2));
-  console.log(`💾 Guardados ${top3.length} productos en productos.json`);
+  return allProducts.sort((a, b) => a.precio - b.precio);
 }
 
-const searchTerm = process.argv[2] || 'leche';
-mainScraper(searchTerm);
+module.exports = scrapeProductos;
